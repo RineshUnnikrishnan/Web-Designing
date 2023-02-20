@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider</title>
+
+    <style>
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .slider-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        .slider-item:first-child {
+            display: block;
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+
+<body>
+    <script>
+        $(document).ready(function () {
+            var interval = 3000; // 3 seconds
+            var fadeTime = 1000; // 1 second
+
+            function slide() {
+                var currentSlide = $('.slider-item:visible');
+                var nextSlide = currentSlide.next('.slider-item').length ? currentSlide.next('.slider-item') : $('.slider-item:first');
+                currentSlide.fadeOut(fadeTime);
+                nextSlide.fadeIn(fadeTime);
+            }
+
+            setInterval(slide, interval);
+        });
+    </script>
+
+    <div class="slider-container">
+        <div class="slider-item"><img src="Imagez/img1.jpg"></div>
+        <div class="slider-item"><img src="Imagez/img2.jpg"></div>
+        <div class="slider-item"><img src="Imagez/img3.jpg"></div>
+    </div>
+</body>
+
+</html>
